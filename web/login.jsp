@@ -45,12 +45,24 @@
                 text-align: center;
                 margin-bottom: 20px;
             }
+             .captchaDiv{
+                border: 1px solid #e5e5e5;
+                height: 3rem;
+                padding: 0.2rem;
+                background: #f2f2f2;
+                text-align: center;
+                border-radius: 0.5rem;
+            }
+            .captchaInput{
+                padding:0;
+                margin-top:1rem;
+            }
         </style>
     </head>
     <body onload="disableBack();">
         <div class="auth-container">
             <h2>Login</h2>
-            <form action="Login" method="post" autocomplete="off">
+            <form action="Login" method="post" autocomplete="off" id="loginform">
                 <div class="mb-3">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" name="username"
@@ -67,36 +79,84 @@
                         </button>
                     </div>
                 </div>
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Log In</button>
+
+
+                <div class="mb-3">
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <span class="form-control" style="height:55px;">
+                                <canvas id="captcha">captcha text</canvas>
+                            </span>
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" id="refreshButton" type="button" style="height:5.4vh">
+                                    <img src="assets/images/arrows-rotate-solid.svg"  style="height:2vh"/>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+                <div class=" mb-3">
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <input class="form-control" type="text"  placeholder="Enter Captcha" id="textBox" >
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default" style="height:5.4vh">
+                                    <img src="assets/images/pass_icon.svg"  style="height:2vh"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary" onclick="checkCaptcha()" > Log In</button>
+                </div>
+                <div class="errorcaptch"></div>
             </form>
 
-            <% 
+            <%
                 // Display error if any (without revealing internal details)
-                String error = request.getParameter("error"); 
+                String error = request.getParameter("error");
                 if (error != null) {
                     loginLogger.warning("Failed login attempt from IP: " + request.getRemoteAddr());
             %>
             <div class="alert alert-danger mt-3">Invalid credentials. Please try again.</div>
-            <% } %>
+            <% }%>
         </div>
-
+        <script src="assets/js/captcha.js"></script>
         <script>
-            function togglePassword() {
-                const pwd = document.getElementById("password");
-                pwd.type = pwd.type === "password" ? "text" : "password";
-            }
+                        function togglePassword() {
+                            const pwd = document.getElementById("password");
+                            pwd.type = pwd.type === "password" ? "text" : "password";
+                        }
 
-            function disableBack() {
-                window.history.forward();
-            }
+                        function disableBack() {
+                            window.history.forward();
+                        }
 
-            window.onload = disableBack;
-            window.onpageshow = function (evt) {
-                if (evt.persisted)
-                    disableBack();
-            };
+                        window.onload = disableBack;
+                        window.onpageshow = function (evt) {
+                            if (evt.persisted)
+                                disableBack();
+                        };
+
+                        function checkCaptcha() {
+                            $("#loginform").submit();
+                            if (userText.value === c) {
+                                result = "correctCaptcha";
+                                popup.classList.add("correctCaptcha");
+                                console.log("captcha is matched");
+                                $("#loginform").submit();
+
+                            } else {
+                                result = "incorrectCaptcha";
+                                popup.classList.add("incorrectCaptcha");
+                                popup.innerHTML = "Incorrect Captcha, please try again";
+                                console.log("captcha is not matched");
+                            }
+                        }
+
         </script>
     </body>
 </html>
