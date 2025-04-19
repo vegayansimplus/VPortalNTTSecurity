@@ -1,0 +1,4 @@
+device_ip,snmp_version,username,groupname,vendorname,subgroupname,SHAv,AESv
+10.202.147.5,3,NeoAutomata_admin,Branch,cisco,Urban,SHA,AES
+10.202.172.5,3,NeoAutomata_admin,Branch,cisco,Urban,SHA,AES
+10.202.172.8,3,NeoAutomata_admin,Branch,cisco,Urban,SHA256,AES256

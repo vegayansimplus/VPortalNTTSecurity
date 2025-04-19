@@ -1,0 +1,83 @@
+body{
+    font-size: 12px;
+}
+@font-face {
+  font-family: 'VegaIcons';
+  src:  url('fonts/VegaIcons.eot?d9eaqi');
+  src:  url('fonts/VegaIcons.eot?d9eaqi#iefix') format('embedded-opentype'),
+    url('fonts/VegaIcons.ttf?d9eaqi') format('truetype'),
+    url('fonts/VegaIcons.woff?d9eaqi') format('woff'),
+    url('fonts/VegaIcons.svg?d9eaqi#VegaIcons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="ic-"], [class*=" ic-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'VegaIcons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ic-password:before {
+    content: "\e911";
+}
+
+.ic-user:before {
+    content: "\e910";
+}
+.ic-arrow-left:before {
+  content: "\e90e";
+}
+.ic-search:before {
+  content: "\e90d";
+}
+.ic-dashboard:before {
+  content: "\e900";
+}
+.ic-reports:before {
+  content: "\e901";
+}
+.ic-notify:before {
+  content: "\e902";
+}
+.ic-notify-mobileview:before {
+  content: "\e903";
+}
+.ic-arrow-down:before {
+  content: "\e904";
+}
+.ic-arrow-profile:before {
+  content: "\e905";
+}
+.ic-arrowsubmenu:before {
+  content: "\e906";
+  font-size:9px;
+}
+.ic-analysis:before {
+  content: "\e907";
+}
+.ic-trending:before {
+  content: "\e908";
+}
+.ic-threshold-1:before {
+  content: "\e909";
+}
+.ic-threshold:before {
+  content: "\e90a";
+}
+.ic-schedule:before {
+  content: "\e90b";
+}
+.ic-time:before {
+  content: "\e90c";
+}
